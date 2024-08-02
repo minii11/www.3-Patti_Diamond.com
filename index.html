@@ -31,6 +31,16 @@
       background: #fff;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     }
+    .instructions {
+      background: #fef6e5;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #333;
+      border: 2px solid #7d2ae8;
+    }
     .result_images {
       display: flex;
       column-gap: 7rem;
@@ -113,28 +123,31 @@
 </head>
 <body>
   <section class="container">
+    <div class="instructions">
+      Umeed hai apnay form fill kr k Bet ke amount Admin ko bta de ho gi wrna apko koe award nahe miLay ga ! Game k result ka Screen shot Lazmi admin ko bhaijeyay ga Wrna apke game play ko update nahe kea jay ga. GOOD LUCK ! apko 3 chances deay jain gay jis main 3 rounds hongay vo sbhi clear krain gay tow Cash prize Win kr Lain gay
+    </div>
     <div class="result_field">
       <div class="result_images">
         <span class="user_result">
-          <img src="images/rock.png" alt="">
+          <img src="images/rock.png" alt="User Choice">
         </span>
         <span class="cpu_result">
-          <img src="images/rock.png" alt="">
+          <img src="images/rock.png" alt="CPU Choice">
         </span>
       </div>
       <div class="result">Chance 1: Let's Play!!</div>
     </div>
     <div class="option_images">
-      <span class="option_image">
-        <img src="images/rock.png" alt="">
+      <span class="option_image" data-choice="R">
+        <img src="images/rock.png" alt="Rock">
         <p>Rock</p>
       </span>
-      <span class="option_image">
-        <img src="images/paper.png" alt="">
+      <span class="option_image" data-choice="P">
+        <img src="images/paper.png" alt="Paper">
         <p>Paper</p>
       </span>
-      <span class="option_image">
-        <img src="images/scissors.png" alt="">
+      <span class="option_image" data-choice="S">
+        <img src="images/scissors.png" alt="Scissors">
         <p>Scissors</p>
       </span>
     </div>
@@ -146,26 +159,26 @@
       result = document.querySelector(".result"),
       optionImages = document.querySelectorAll(".option_image");
 
-    let chances = localStorage.getItem('chances') || 0;
-    chances = parseInt(chances, 10);
-    
-    if (chances >= 3) {
-      showFinalMessage();
-      disableGame();
-    }
-
+    let chances = 1;
     let round = 0;
 
     optionImages.forEach((image, index) => {
       image.addEventListener("click", (e) => {
-        if (chances >= 3) return;
+        if (round >= 3) {
+          chances++;
+          round = 0;
+          result.textContent = `Chance ${chances}: Let's Play!!`;
+          return;
+        }
 
         image.classList.add("active");
         userResult.src = cpuResult.src = "images/rock.png";
         result.textContent = "Wait...";
 
-        optionImages.forEach((image2, index2) => {
-          index !== index2 && image2.classList.remove("active");
+        optionImages.forEach((image2) => {
+          if (image !== image2) {
+            image2.classList.remove("active");
+          }
         });
 
         gameContainer.classList.add("start");
@@ -173,15 +186,14 @@
         setTimeout(() => {
           gameContainer.classList.remove("start");
 
-          let imageSrc = e.target.querySelector("img").src;
-          userResult.src = imageSrc;
+          let userChoice = e.target.dataset.choice;
+          userResult.src = e.target.querySelector("img").src;
 
           let cpuImages = ["images/rock.png", "images/paper.png", "images/scissors.png"];
-          let randomNumber = (chances < 2) ? (Math.floor(Math.random() * 2) + 1) : 0; // Forces user to lose first two chances
-          cpuResult.src = cpuImages[randomNumber];
-
-          let cpuValue = ["R", "P", "S"][randomNumber];
-          let userValue = ["R", "P", "S"][index];
+          let cpuChoices = ["R", "P", "S"];
+          let randomNumber = Math.floor(Math.random() * 3);
+          let cpuChoice = cpuChoices[randomNumber];
+          cpuResult.src = cpuImages[cpuChoices.indexOf(cpuChoice)];
 
           let outcomes = {
             RR: "Draw",
@@ -195,50 +207,29 @@
             SP: "User",
           };
 
-          // Determine outcome for chances 1 and 2
-          if (chances < 2) {
-            let outComeValue = "Cpu";
-            result.textContent = outComeValue === "User" ? `${outComeValue} Won!!` : "Cpu Won!!";
-          } else {
-            // Let user win all rounds on chance 3
-            let outComeValue = "User";
-            result.textContent = outComeValue === "User" ? `${outComeValue} Won!!` : "Cpu Won!!";
-          }
+          let outcomeKey = `${userChoice}${cpuChoice}`;
+          let outcomeValue = outcomes[outcomeKey];
+
+          // Determine if the user wins the current chance
+          let userWins = chances === 3;
+          result.textContent = userWins ? "User Won!!" : (outcomeValue === "User" ? "User Won!!" : (outcomeValue === "Cpu" ? "Cpu Won!!" : "Draw"));
 
           round++;
           if (round >= 3) {
-            chances++;
-            localStorage.setItem('chances', chances);
-
-            switch (chances) {
-              case 1:
-                result.textContent = "Round 1 Over! Chance 2: Let's Play Again!!";
-                break;
-              case 2:
-                result.textContent = "Round 2 Over! Chance 3: Your Final Chance!!";
-                break;
-              case 3:
-              default:
-                showFinalMessage();
-                disableGame();
-                break;
+            if (chances >= 3) {
+              result.innerHTML = `
+                <div class="congrats-message">
+                  Dear! You have won this game. Kindly contact admin and share your result so that he can update your record and you can get another chance to replay and win this game.<br>
+                  Note: Don't try replaying the game as the result would be the same as you got in your first attempt. Ask admin to update your record and fill the form again with a new bet amount so that you can play the game again with a new result.
+                </div>`;
+            } else {
+              result.textContent = `Chance ${chances}: Let's Play Again!!`;
             }
-
-            round = 0;
           }
         }, 2500);
       });
     });
-
-    function disableGame() {
-      optionImages.forEach(image => {
-        image.style.pointerEvents = "none";
-      });
-    }
-
-    function showFinalMessage() {
-      result.innerHTML = '<div class="congrats-message">Congratulations ! You have won this game. Contact admin to claim your cash prize.<br>For replaying this game, you need to pay some charges. Contact admin for more info!</div>';
-    }
   </script>
 </body>
 </html>
+
