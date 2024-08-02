@@ -60,6 +60,7 @@
             clip-path: circle(50%);
             position: relative;
             transform: rotate(0deg);
+            z-index: 1; /* Ensure wheel is above the images */
         }
         .wheel-content {
             position: absolute;
@@ -99,19 +100,21 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            transform: translate(-50%, -50%);
             top: 50%;
             left: 50%;
+            transform: translate(-50%, -50%);
+            clip-path: circle(50%);
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            clip-path: circle(50%);
+            z-index: 0; /* Ensure images are below the wheel */
         }
         .images-container div {
             position: absolute;
-            width: 12%;
-            height: 12%;
+            width: 15vmin; /* Adjust image size */
+            height: 15vmin; /* Adjust image size */
+            overflow: hidden;
+            transform-origin: center;
         }
         .images-container img {
             width: 100%;
@@ -119,6 +122,16 @@
             border-radius: 50%;
             object-fit: cover;
         }
+        .images-container div:nth-child(1) { transform: rotate(0deg) translateX(125%); }
+        .images-container div:nth-child(2) { transform: rotate(36deg) translateX(125%); }
+        .images-container div:nth-child(3) { transform: rotate(72deg) translateX(125%); }
+        .images-container div:nth-child(4) { transform: rotate(108deg) translateX(125%); }
+        .images-container div:nth-child(5) { transform: rotate(144deg) translateX(125%); }
+        .images-container div:nth-child(6) { transform: rotate(180deg) translateX(125%); }
+        .images-container div:nth-child(7) { transform: rotate(216deg) translateX(125%); }
+        .images-container div:nth-child(8) { transform: rotate(252deg) translateX(125%); }
+        .images-container div:nth-child(9) { transform: rotate(288deg) translateX(125%); }
+        .images-container div:nth-child(10) { transform: rotate(324deg) translateX(125%); }
         .spin-button {
             padding: 10px 20px;
             background-color: #333;
@@ -152,11 +165,11 @@
         }
     </style>
 </head>
+<body>
     <div>
     <img src="./img 0.1.jpg" alt="">
 </div>
 
-<body>
     <div class="instructions">
         Dear! To play the SpinWheel game, you need to invest 1000 RS. After that, your name will be included in the wheel and you'll also get a chance to play SPS. You could be a lucky member and win a Laptop!
     </div>
@@ -176,16 +189,16 @@
                     <span>300 rupees</span>
                 </div>
                 <div class="images-container">
-                    <div style="transform: rotate(0deg) translateX(50%);"><img src="./img 201.jpg" alt=""></div>
-                    <div style="transform: rotate(36deg) translateX(50%);"><img src="./img 202.jpg" alt=""></div>
-                    <div style="transform: rotate(72deg) translateX(50%);"><img src="./img 203.jpg" alt=""></div>
-                    <div style="transform: rotate(108deg) translateX(50%);"><img src="./img 204.jpg" alt=""></div>
-                    <div style="transform: rotate(144deg) translateX(50%);"><img src="./img 205.jpg" alt=""></div>
-                    <div style="transform: rotate(180deg) translateX(50%);"><img src="./img 206.jpg" alt=""></div>
-                    <div style="transform: rotate(216deg) translateX(50%);"><img src="./img 207.jpg" alt=""></div>
-                    <div style="transform: rotate(252deg) translateX(50%);"><img src="./img 208.jpg" alt=""></div>
-                    <div style="transform: rotate(288deg) translateX(50%);"><img src="./img 209.jpg" alt=""></div>
-                    <div style="transform: rotate(324deg) translateX(50%);"><img src="./img 210.jpg" alt=""></div>
+                    <div><img src="./img 201.jpg" alt="Image 1"></div>
+                    <div><img src="./img 202.jpg" alt="Image 2"></div>
+                    <div><img src="./img 203.jpg" alt="Image 3"></div>
+                    <div><img src="./img 204.jpg" alt="Image 4"></div>
+                    <div><img src="./img 205.jpg" alt="Image 5"></div>
+                    <div><img src="./img 206.jpg" alt="Image 6"></div>
+                    <div><img src="./img 207.jpg" alt="Image 7"></div>
+                    <div><img src="./img 208.jpg" alt="Image 8"></div>
+                    <div><img src="./img 209.jpg" alt="Image 9"></div>
+                    <div><img src="./img 210.jpg" alt="Image 10"></div>
                 </div>
             </div>
         </div>
@@ -205,9 +218,9 @@
 
             // After 10 seconds, stop the wheel and show result
             setTimeout(() => {
-                // Stop the wheel (adjust rotation for demo purposes)
+                // Stop at Sara
                 wheel.style.transition = 'none';
-                wheel.style.transform = 'rotate(2880deg)'; // Adjust to stop at a specific segment
+                wheel.style.transform = 'rotate(2880deg)'; // Adjust to stop at Sara
 
                 // Display result
                 result.textContent = 'Congrats dear Lucky Winner! You have won the Bike. Take an SS and inform the admin :> Contact admin to claim your prize';
@@ -223,4 +236,3 @@
     </script>
 </body>
 </html>
-
