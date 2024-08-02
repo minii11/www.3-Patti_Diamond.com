@@ -3,93 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Plans</title>
+    <title>Spin Wheel</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
         }
-        header, footer {
-            background-color: #333;
-            color: white;
+        .instructions {
+            background: #fef6e5;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
             text-align: center;
-            padding: 10px 0;
+            font-size: 1.1rem;
+            color: #333;
+            border: 2px solid #7d2ae8;
+        }
+        .spin-wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-bottom: 1rem;
+        }
+        .spin-wheel {
             width: 100%;
-            position: fixed;
-            top: 0;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
         }
-        header h1 {
-            margin: 0;
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                red 0% 10%, 
+                orange 10% 20%, 
+                yellow 20% 30%, 
+                green 30% 40%, 
+                cyan 40% 50%, 
+                blue 50% 60%, 
+                violet 60% 70%, 
+                pink 70% 80%, 
+                brown 80% 90%, 
+                grey 90% 100%
+            );
+            clip-path: circle(50%);
+            position: relative;
+            transform: rotate(0deg);
+        }
+        .wheel-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+            transform: rotate(-36deg); /* Rotate the content to align with the wheel */
+        }
+        .wheel-content span {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            text-align: right;
             line-height: 1.5;
-            color: white; /* Set header text color to white */
-             font-size: 40px; /* Adjust the font size as needed
+            transform-origin: 0% 0%;
+            display: inline-block;
+            padding-left: 10px;
+            color: white;
         }
-        footer p {
-            margin: 0;
-            line-height: 1.5;
+        .wheel-content span:nth-child(1) { transform: rotate(0deg); color: red; }
+        .wheel-content span:nth-child(2) { transform: rotate(36deg); color: orange; }
+        .wheel-content span:nth-child(3) { transform: rotate(72deg); color: yellow; }
+        .wheel-content span:nth-child(4) { transform: rotate(108deg); color: green; }
+        .wheel-content span:nth-child(5) { transform: rotate(144deg); color: cyan; }
+        .wheel-content span:nth-child(6) { transform: rotate(180deg); color: blue; }
+        .wheel-content span:nth-child(7) { transform: rotate(216deg); color: violet; }
+        .wheel-content span:nth-child(8) { transform: rotate(252deg); color: pink; }
+        .wheel-content span:nth-child(9) { transform: rotate(288deg); color: brown; }
+        .wheel-content span:nth-child(10) { transform: rotate(324deg); color: grey; }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 30px solid #333;
+            transform: translate(-50%, -100%);
+            z-index: 1;
         }
-        .container {
-            padding: 20px;
-            margin-top: 60px;
-            margin-bottom: 60px;
-            text-align: center; /* Center text within the container */
+        .result {
+            text-align: center;
+            font-size: 2rem;
+            color: red;
+            margin-top: 1rem;
+            display: none;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+        }
+        .spin-button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+        .spin-button:hover {
+            background-color: #555;
+        }
+        .glow {
+            animation: glow 1s infinite;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
+            50% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>OUR PLAN</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="form.html">Form</a>
-            <a href="people-earnings.html">People Earnings</a>
-            <a href="do-transaction.html">Do Transaction</a>
-        </nav>
-    </header>
-    <main class="container">
-        
-        <h2>Our Plans</h2>
-        <h2>Details about different plans will be shown here.</h2>
-        <div>
-    <img src="./img 3.jpg" alt="">
-</div>
+    <div class="instructions">
+        Dear! To play the SpinWheel game, you need to invest 1000 RS. After that, your name will be included in the wheel and you'll also get a chance to play SPS. You could be a lucky member and win a Laptop!
+    </div>
+    <div class="spin-wheel-container">
+        <div class="spin-wheel">
+            <div class="wheel">
+                <div class="wheel-content">
+                    <span>Sara</span>
+                    <span>Usma</span>
+                    <span>Fatima</span>
+                    <span>Hasan</span>
+                    <span>Fahad</span>
+                    <span>Arooj</span>
+                    <span>Kiran</span>
+                    <span>Usman</span>
+                    <span>Ali</span>
+                    <span>Ahmad</span>
+                </div>
+            </div>
+            <div class="arrow"></div>
+        </div>
+    </div>
+    <button class="spin-button" onclick="spinWheel()">Spin the Wheel</button>
+    <div id="result" class="result"></div>
 
+    <script>
+        function spinWheel() {
+            const wheel = document.querySelector('.wheel');
+            const result = document.getElementById('result');
 
-     <h2>🌟 Join Our Exclusive Community!</h2> 🌟
+            // Start the spin
+            wheel.style.transition = 'transform 10s cubic-bezier(0.35, 0.85, 0.35, 1)';
+            wheel.style.transform = 'rotate(3600deg)';
+            result.style.display = 'none';
 
-   <p>    <h2> 👥 Invite Five Friends 👥</h2>
-        
-        ~ Gather a dynamic team of five like-minded individuals.
-        ~ Together, we'll embark on an exciting journey! </p>
+            // After 10 seconds, stop the wheel and show result
+            setTimeout(() => {
+                // Stop at Sara
+                wheel.style.transition = 'none';
+                wheel.style.transform = 'rotate(2880deg)'; // Adjust to stop at Sara
 
-        <img src="./img 0.1.jpg" alt="">
-        
-      <p><h2>  💰 Invest Only 500 PKR 💰</h2>
-        
-        ~A one-time investment opens the door to lifelong earnings.
-        ~ This is your golden opportunity!</p
-                                              
-         <img src="./img 0.0.jpg" alt="">
-        
-   <p>    <h2> 🎁 Rewards Await You 🎁</h2>
-        
-        ~ Receive an initial reward of 1000 PKR or 1500 PKR.
-        ~ As our community flourishes, additional bonuses will come your way!</p>
-            <img src="./img 0.0.jpg" alt="">
-            <img src="./img 0.3.jpg" alt="">
- <h2>      🚀 Watch Your Earnings Grow 🚀</h2>
-        
-        ~ With each passing day, your prosperity will soar.
-        ~ Our community's success means more rewards for you! </p> 
-        <img src="./img 0.4.jpg" alt="">
-        
-        Don't miss out! Join us today and unlock a world of possibilities. 🌈✨
-        
-        </p>
-    </main>
-    <footer>
-        <p>&copy; plan 2024 on a secure platform . All rights reserved.</p>
-    </footer>
+                // Display result
+                result.textContent = 'Congrats Sara! You have won the Laptop :> Contact admin to claim your prize';
+                result.classList.add('glow');
+                result.style.display = 'block';
+
+                // Reset wheel transition
+                setTimeout(() => {
+                    wheel.style.transition = 'transform 10s cubic-bezier(0.35, 0.85, 0.35, 1)';
+                }, 100);
+            }, 10000); // 10 seconds spin
+        }
+    </script>
 </body>
 </html>
+
