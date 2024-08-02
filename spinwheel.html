@@ -1,13 +1,9 @@
-<!DOCTYPE html>
+(<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spin Wheel</title>
-     <div>
-                                <img src="./img 0.1.jpg" alt="">
-                            </div>
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,6 +15,7 @@
             justify-content: center;
             height: 100vh;
             background-color: #f0f0f0;
+            overflow: hidden;
         }
         .instructions {
             background: #fef6e5;
@@ -32,8 +29,8 @@
         }
         .spin-wheel-container {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 80vmin; /* Adjusted for responsiveness */
+            height: 80vmin; /* Adjusted for responsiveness */
             margin-bottom: 1rem;
         }
         .spin-wheel {
@@ -80,12 +77,12 @@
             position: absolute;
             width: 50%;
             height: 50%;
-            text-align: right;
+            text-align: center;
             line-height: 1.5;
-            transform-origin: 0% 0%;
+            transform-origin: 50% 50%;
             display: inline-block;
-            padding-left: 10px;
             color: white;
+            padding: 5px;
         }
         .wheel-content span:nth-child(1) { transform: rotate(0deg); color: red; }
         .wheel-content span:nth-child(2) { transform: rotate(36deg); color: orange; }
@@ -198,3 +195,4 @@
 </body>
 </html>
 
+)
