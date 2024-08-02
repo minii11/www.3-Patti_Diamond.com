@@ -29,31 +29,32 @@
         }
         .spin-wheel-container {
             position: relative;
-            width: 80vmin;
-            height: 80vmin;
+            width: 80vmin; /* Adjusted for responsiveness */
+            height: 80vmin; /* Adjusted for responsiveness */
             margin-bottom: 1rem;
         }
         .spin-wheel {
+            position: relative;
             width: 100%;
             height: 100%;
-            border-radius: 50%;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .wheel {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             background: conic-gradient(
-                red 0% 10%,
-                orange 10% 20%,
-                yellow 20% 30%,
-                green 30% 40%,
-                cyan 40% 50%,
-                blue 50% 60%,
-                violet 60% 70%,
-                pink 70% 80%,
-                brown 80% 90%,
+                red 0% 10%, 
+                orange 10% 20%, 
+                yellow 20% 30%, 
+                green 30% 40%, 
+                cyan 40% 50%, 
+                blue 50% 60%, 
+                violet 60% 70%, 
+                pink 70% 80%, 
+                brown 80% 90%, 
                 grey 90% 100%
             );
             clip-path: circle(50%);
@@ -71,7 +72,7 @@
             font-weight: bold;
             color: white;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-            transform: rotate(-36deg);
+            transform: rotate(-36deg); /* Rotate the content to align with the wheel */
         }
         .wheel-content span {
             position: absolute;
@@ -94,37 +95,29 @@
         .wheel-content span:nth-child(8) { transform: rotate(252deg); color: pink; }
         .wheel-content span:nth-child(9) { transform: rotate(288deg); color: brown; }
         .wheel-content span:nth-child(10) { transform: rotate(324deg); color: grey; }
-        .arrow {
+        .images-container {
             position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
             top: 50%;
             left: 50%;
-            width: 0;
-            height: 0;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-            border-bottom: 30px solid #333;
-            transform: translate(-50%, -100%);
-            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            clip-path: circle(50%);
         }
-        .arrow::before {
-            content: '';
+        .images-container div {
             position: absolute;
-            top: 0;
-            left: 50%;
-            width: 4px;
-            height: 70px;
-            background: #333;
-            transform: translateX(-50%);
-            z-index: -1;
+            width: 12%;
+            height: 12%;
         }
-        .result {
-            text-align: center;
-            font-size: 2rem;
-            color: red;
-            margin-top: 1rem;
-            display: none;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+        .images-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
         }
         .spin-button {
             padding: 10px 20px;
@@ -135,9 +128,19 @@
             cursor: pointer;
             font-size: 1.2rem;
             transition: background-color 0.3s;
+            margin-top: 1rem;
         }
         .spin-button:hover {
             background-color: #555;
+        }
+        .result {
+            text-align: center;
+            font-size: 2rem;
+            color: red;
+            margin-top: 1rem;
+            display: none;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
         }
         .glow {
             animation: glow 1s infinite;
@@ -147,32 +150,12 @@
             50% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); }
             100% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
         }
-        .images-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            transform: translate(-50%, -50%);
-            clip-path: circle(50%);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-        .images-container div {
-            position: absolute;
-            width: 10%;
-            height: 10%;
-        }
-        .images-container img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
     </style>
 </head>
+    <div>
+    <img src="./img 0.1.jpg" alt="">
+</div>
+
 <body>
     <div class="instructions">
         Dear! To play the SpinWheel game, you need to invest 1000 RS. After that, your name will be included in the wheel and you'll also get a chance to play SPS. You could be a lucky member and win a Laptop!
@@ -193,19 +176,18 @@
                     <span>300 rupees</span>
                 </div>
                 <div class="images-container">
-                    <div><img src="./img 201.jpg" alt=""></div>
-                    <div><img src="./img 202.jpg" alt=""></div>
-                    <div><img src="./img 203.jpg" alt=""></div>
-                    <div><img src="./img 204.jpg" alt=""></div>
-                    <div><img src="./img 205.jpg" alt=""></div>
-                    <div><img src="./img 206.jpg" alt=""></div>
-                    <div><img src="./img 207.jpg" alt=""></div>
-                    <div><img src="./img 208.jpg" alt=""></div>
-                    <div><img src="./img 209.jpg" alt=""></div>
-                    <div><img src="./img 210.jpg" alt=""></div>
+                    <div style="transform: rotate(0deg) translateX(50%);"><img src="./img 201.jpg" alt=""></div>
+                    <div style="transform: rotate(36deg) translateX(50%);"><img src="./img 202.jpg" alt=""></div>
+                    <div style="transform: rotate(72deg) translateX(50%);"><img src="./img 203.jpg" alt=""></div>
+                    <div style="transform: rotate(108deg) translateX(50%);"><img src="./img 204.jpg" alt=""></div>
+                    <div style="transform: rotate(144deg) translateX(50%);"><img src="./img 205.jpg" alt=""></div>
+                    <div style="transform: rotate(180deg) translateX(50%);"><img src="./img 206.jpg" alt=""></div>
+                    <div style="transform: rotate(216deg) translateX(50%);"><img src="./img 207.jpg" alt=""></div>
+                    <div style="transform: rotate(252deg) translateX(50%);"><img src="./img 208.jpg" alt=""></div>
+                    <div style="transform: rotate(288deg) translateX(50%);"><img src="./img 209.jpg" alt=""></div>
+                    <div style="transform: rotate(324deg) translateX(50%);"><img src="./img 210.jpg" alt=""></div>
                 </div>
             </div>
-            <div class="arrow"></div>
         </div>
     </div>
     <button class="spin-button" onclick="spinWheel()">Spin the Wheel</button>
@@ -223,9 +205,9 @@
 
             // After 10 seconds, stop the wheel and show result
             setTimeout(() => {
-                // Stop at Sara
+                // Stop the wheel (adjust rotation for demo purposes)
                 wheel.style.transition = 'none';
-                wheel.style.transform = 'rotate(2880deg)'; // Adjust to stop at Sara
+                wheel.style.transform = 'rotate(2880deg)'; // Adjust to stop at a specific segment
 
                 // Display result
                 result.textContent = 'Congrats dear Lucky Winner! You have won the Bike. Take an SS and inform the admin :> Contact admin to claim your prize';
@@ -241,6 +223,4 @@
     </script>
 </body>
 </html>
-
-
 
