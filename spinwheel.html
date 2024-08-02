@@ -29,8 +29,8 @@
         }
         .spin-wheel-container {
             position: relative;
-            width: 80vmin; /* Adjusted for responsiveness */
-            height: 80vmin; /* Adjusted for responsiveness */
+            width: 80vmin;
+            height: 80vmin;
             margin-bottom: 1rem;
         }
         .spin-wheel {
@@ -45,15 +45,15 @@
             height: 100%;
             border-radius: 50%;
             background: conic-gradient(
-                red 0% 10%, 
-                orange 10% 20%, 
-                yellow 20% 30%, 
-                green 30% 40%, 
-                cyan 40% 50%, 
-                blue 50% 60%, 
-                violet 60% 70%, 
-                pink 70% 80%, 
-                brown 80% 90%, 
+                red 0% 10%,
+                orange 10% 20%,
+                yellow 20% 30%,
+                green 30% 40%,
+                cyan 40% 50%,
+                blue 50% 60%,
+                violet 60% 70%,
+                pink 70% 80%,
+                brown 80% 90%,
                 grey 90% 100%
             );
             clip-path: circle(50%);
@@ -71,7 +71,7 @@
             font-weight: bold;
             color: white;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-            transform: rotate(-36deg); /* Rotate the content to align with the wheel */
+            transform: rotate(-36deg);
         }
         .wheel-content span {
             position: absolute;
@@ -109,13 +109,13 @@
         .arrow::before {
             content: '';
             position: absolute;
-            top: 0; /* Stick will be placed behind the arrow */
+            top: 0;
             left: 50%;
             width: 4px;
-            height: 70px; /* Adjust the height of the stick */
+            height: 70px;
             background: #333;
             transform: translateX(-50%);
-            z-index: -1; /* Ensure the stick is behind the arrow */
+            z-index: -1;
         }
         .result {
             text-align: center;
@@ -241,5 +241,6 @@
     </script>
 </body>
 </html>
+
 
 
