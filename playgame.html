@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JavaScript Game | Rock Paper Scissors</title>
   <style>
-    /* Import Google font - Poppins */
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
     * {
       margin: 0;
@@ -20,16 +19,14 @@
       align-items: center;
       justify-content: center;
       background: #f6f7fb;
-    }
-    ::selection {
-      color: #fff;
-      background-color: #7d2ae8;
+      text-align: center;
     }
     .container {
       padding: 2rem 7rem;
       border-radius: 14px;
       background: #fff;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
     .instructions {
       background: #fef6e5;
@@ -43,6 +40,7 @@
     }
     .result_images {
       display: flex;
+      justify-content: center;
       column-gap: 7rem;
     }
     .container.start .user_result {
@@ -85,7 +83,8 @@
       display: flex;
       align-items: center;
       margin-top: 2.5rem;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 2rem;
     }
     .container.start .option_images {
       pointer-events: none;
@@ -121,16 +120,12 @@
     }
   </style>
 </head>
-
-
 <body>
   <section class="container">
-      <div>
-    <img src="./img 220.jpg" alt="">
-</div>
-
+    <div>
+      <img src="./img 220.jpg" alt="">
+    </div>
     <div class="instructions">
-      
       Umeed hai apnay form fill kr k Bet ke amount Admin ko bta de ho gi wrna apko koe award nahe miLay ga ! Game k result ka Screen shot Lazmi admin ko bhaijeyay ga Wrna apke game play ko update nahe kea jay ga. GOOD LUCK ! apko 3 chances deay jain gay jis main 3 rounds hongay vo sbhi clear krain gay tow Cash prize Win kr Lain gay
     </div>
     <div class="result_field">
@@ -197,10 +192,21 @@
           userResult.src = e.target.querySelector("img").src;
 
           let cpuImages = ["./img 98.jpg", "./img 100.jpg", "./img 99.jpg"];
-          let cpuChoices = ["R", "P", "S"];
-          let randomNumber = Math.floor(Math.random() * 3);
-          let cpuChoice = cpuChoices[randomNumber];
-          cpuResult.src = cpuImages[cpuChoices.indexOf(cpuChoice)];
+          let cpuChoice;
+
+          if (chances < 3) {
+            // User loses the first two chances
+            if (userChoice === "R") cpuChoice = "P";
+            if (userChoice === "P") cpuChoice = "S";
+            if (userChoice === "S") cpuChoice = "R";
+          } else {
+            // User wins the third chance
+            if (userChoice === "R") cpuChoice = "S";
+            if (userChoice === "P") cpuChoice = "R";
+            if (userChoice === "S") cpuChoice = "P";
+          }
+
+          cpuResult.src = cpuImages[["R", "P", "S"].indexOf(cpuChoice)];
 
           let outcomes = {
             RR: "Draw",
@@ -239,4 +245,5 @@
   </script>
 </body>
 </html>
+
 
