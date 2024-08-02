@@ -115,6 +115,15 @@
     .buttons button:hover {
       background-color: #5a1c8a;
     }
+    .spin-wheel-interface, .game-interface {
+      display: none;
+    }
+    .spin-wheel {
+      text-align: center;
+    }
+    .spin-wheel img {
+      width: 300px;
+    }
   </style>
 </head>
 <body>
@@ -127,3 +136,59 @@
       <button id="playGameBtn">Play Game</button>
       <button id="spinWheelBtn">Spin Wheel</button>
     </div>
+    <!-- Game Interface -->
+    <div id="gameInterface" class="game-interface">
+      <div class="result_field">
+        <div class="result_images">
+          <span class="user_result">
+            <img src="./img 98.jpg" alt="User Choice">
+          </span>
+          <span class="cpu_result">
+            <img src="./img 98.jpg" alt="CPU Choice">
+          </span>
+        </div>
+        <div class="result">Chance 1: Let's Play!!</div>
+      </div>
+      <div class="option_images">
+        <span class="option_image" data-choice="R">
+          <img src="./img 98.jpg" alt="Rock">
+          <p>Rock</p>
+        </span>
+        <span class="option_image" data-choice="P">
+          <img src="./img 100.jpg" alt="Paper">
+          <p>Paper</p>
+        </span>
+        <span class="option_image" data-choice="S">
+          <img src="./img 99.jpg" alt="Scissors">
+          <p>Scissors</p>
+        </span>
+      </div>
+    </div>
+    <!-- Spin Wheel Interface -->
+    <div id="spinWheelInterface" class="spin-wheel-interface">
+      <div class="spin-wheel">
+        <img src="./img spinwheel.jpg" alt="Spin Wheel">
+        <p>Spin the wheel to win exciting prizes!</p>
+        <button id="spinBtn">Spin</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const playGameBtn = document.getElementById('playGameBtn');
+    const spinWheelBtn = document.getElementById('spinWheelBtn');
+    const gameInterface = document.getElementById('gameInterface');
+    const spinWheelInterface = document.getElementById('spinWheelInterface');
+
+    playGameBtn.addEventListener('click', () => {
+      gameInterface.style.display = 'block';
+      spinWheelInterface.style.display = 'none';
+    });
+
+    spinWheelBtn.addEventListener('click', () => {
+      gameInterface.style.display = 'none';
+      spinWheelInterface.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
