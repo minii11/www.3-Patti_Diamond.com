@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .record-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .record-table th, .record-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .record-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        @media screen and (max-width: 600px) {
+            .record-table, .record-table thead, .record-table tbody, .record-table th, .record-table td, .record-table tr {
+                display: block;
+            }
+            .record-table tr {
+                margin-bottom: 15px;
+            }
+            .record-table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            .record-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 10px;
+                font-weight: bold;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p>🌟 People who have joined this platform can see their progress here! Make sure to visit the website and check your balance, as we won't be responsible for any record discrepancies later. Best of luck to all newcomers! 🌟</p>
+
+<p>🚀 We are thrilled to introduce more excellent plans for everyone, providing a real platform that helps you grow and achieve what you deserve for the betterment of your future! 🌟</p>
+
+    <h2>Progress of people who joined!</h2>
+    <table class="record-table">
+        <thead>
+            <tr>
+                <th>Serial No</th>
+                <th>Name</th>
+                <th>Payed Amount</th>
+                <th>Number of Joinings</th>
+                <th>Current Balance</th>
+                <th>Rewarded</th>
+                <th>Bonus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Serial No">1</td>
+                <td data-label="Name">Muhammad Qasim</td>
+                <td data-label="Payed Amount">500 PKR</td>
+                <td data-label="Number of Joinings">1</td>
+                <td data-label="Current Balance">1500</td>
+                <td data-label="Rewarded">300</td>
+                <td data-label="Bonus">100</td>
+            </tr>
+            <tr>
+                <td data-label="Serial No">2</td>
+                <td data-label="Name">Rizwan Ali</td>
+                <td data-label="Payed Amount">500 PKR</td>
+                <td data-label="Number of Joinings">2</td>
+                <td data-label="Current Balance">1500</td>
+                <td data-label="Rewarded">600</td>
+                <td data-label="Bonus">200</td>
+            </tr>
+
+            
+            <tr>
+                <td data-label="Serial No">3</td>
+                <td data-label="Name">Ali Raza</td>
+                <td data-label="Payed Amount">500 PKR</td>
+                <td data-label="Number of Joinings">0</td>
+                <td data-label="Current Balance">1500</td>
+                <td data-label="Rewarded">0</td>
+                <td data-label="Bonus">0</td>
+            </tr>
+
+            <tr>
+                <td data-label="Serial No">4</td>
+                <td data-label="Name">Rehana Bibi</td>
+                <td data-label="Payed Amount">500 PKR</td>
+                <td data-label="Number of Joinings">0</td>
+                <td data-label="Current Balance">1500</td>
+                <td data-label="Rewarded">0</td>
+                <td data-label="Bonus">0</td>
+            </tr>
+            
+                
+            
+        </tbody>
+    </table>
+</body>
+</html>
+
