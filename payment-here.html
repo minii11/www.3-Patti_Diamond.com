@@ -9,25 +9,33 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            text-align: center; /* Center text */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
         }
         header, footer {
             background-color: #f8f9fa;
             padding: 10px 20px;
-            text-align: center;
             font-weight: bold;
+            width: 100%;
         }
         .instructions {
             font-weight: bold;
             font-size: 1.2em;
             color: red;
-            text-align: center;
             margin: 20px 0;
         }
         .message-box {
             border: 1px solid #ccc;
             padding: 20px;
-            margin: 10px 20px;
             background-color: #f1f1f1;
+            text-align: left; /* Align text to left inside the box */
+            display: inline-block; /* Center the box */
+            max-width: 90%; /* Responsive width */
+            box-sizing: border-box;
         }
         .payment-link, .whatsapp-link {
             color: blue;
@@ -38,45 +46,52 @@
             font-size: 1.1em;
             color: red;
         }
+        h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Center the image */
+        }
     </style>
 </head>
 <body>
     <header>
         Welcome to Our Payment Portal
     </header>
-        <div>
-            <img src="./img 0.111.jpg" alt="">
-        </div>
-    <div class="instructions">Instructions: Read carefully before proceeding with your transaction</div>
+
+    <div>
+        <img src="./img 0.111.jpg" alt=""> <!-- Center image -->
+    </div>
+
+    <div class="instructions">
+        Instructions: Read carefully before proceeding with your transaction
+    </div>
 
     <div class="message-box">
         <p><strong>Dear!</strong></p>
-        <p>Join us by making a payment of just 300 PKR that will be added to the website then get a chance to play game and earn double and triple from your ivestment .First fill the form share the detaisl of your bank account and the amount you want to bet after deciding inform the admin and play the game and must share the result with him for account updation ! All the rewards will be sent directly to your Easypaisa or JazzCash and will be uploaded on the website in real time!</p>
-        <p><strong> Do payment on the easypaisa account given below</strong></strong></p>
-    
-       
-       <a href="easypaisa://sendmoney?phone=03347112235&name=FARHAN%20ASLAM&amount=500">Open Easypaisa App</a>
+        <p>Join us by making a payment of just 300 PKR that will be added to the website. Then get a chance to play the game and earn double and triple from your investment. First, fill the form, share the details of your bank account, and the amount you want to bet. After deciding, inform the admin and play the game. Must share the result with him for account updation! All rewards will be sent directly to your Easypaisa or JazzCash and will be uploaded on the website in real time!</p>
+        <p><strong>Do payment on the Easypaisa account given below:</strong></p>
         <p>
+            <a href="easypaisa://sendmoney?phone=03347112235&name=FARHAN%20ASLAM&amount=500" class="payment-link">Open Easypaisa App</a>
+        </p>
         <h2>
-                Easypaisa Account<br>
-                Number: 03134598437<br>
-                Name: Muhamad Anwer Butt </h2>
-            </a>
-            
-        </p>
-        <p>Then send the screenshot of the transaction to the admin so your Name and account can be created on the website :} </p>
-        <p>
-
-            <p> Contact admin from here click on this link given below! </p>
-              <p>Contact Us:<a href="https://wa.me/923134403767">Chat on WhatsApp</a></p>
-            </a>
-        </p>
+            Easypaisa Account<br>
+            Number: 03134598437<br>
+            Name: Muhammad Anwer Butt
+        </h2>
+        <p>Then send the screenshot of the transaction to the admin so your name and account can be created on the website. :)</p>
+        <p>Contact admin from here by clicking on the link given below:</p>
+        <p>Contact Us: <a href="https://wa.me/923134403767" class="whatsapp-link">Chat on WhatsApp</a></p>
     </div>
 
     <footer>
-        For help: Admin is available 24/7 Note:-Any misbehave will not be tolerated
-      Before making transaction make sure to fill the form carefully.Every time before playing the game you have to fill the form and inform admin about the bet !
+        For help: Admin is available 24/7. Note: Any misbehavior will not be tolerated. Before making a transaction, make sure to fill the form carefully. Every time before playing the game, you have to fill the form and inform the admin about the bet!
     </footer>
 </body>
 </html>
+
 
