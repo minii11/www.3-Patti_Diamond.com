@@ -129,25 +129,25 @@
     <div class="result_field">
       <div class="result_images">
         <span class="user_result">
-          <img src="images/rock.png" alt="User Choice">
+          <img src="./img 98.jpg" alt="User Choice">
         </span>
         <span class="cpu_result">
-          <img src="images/rock.png" alt="CPU Choice">
+          <img src="./img 98.jpg" alt="CPU Choice">
         </span>
       </div>
       <div class="result">Chance 1: Let's Play!!</div>
     </div>
     <div class="option_images">
       <span class="option_image" data-choice="R">
-        <img src="images/rock.png" alt="Rock">
+        <img src="./img 98.jpg" alt="Rock">
         <p>Rock</p>
       </span>
       <span class="option_image" data-choice="P">
-        <img src="images/paper.png" alt="Paper">
+        <img src="./img 100.jpg" alt="Paper">
         <p>Paper</p>
       </span>
       <span class="option_image" data-choice="S">
-        <img src="images/scissors.png" alt="Scissors">
+        <img src="./img 99.jpg" alt="Scissors">
         <p>Scissors</p>
       </span>
     </div>
@@ -172,7 +172,7 @@
         }
 
         image.classList.add("active");
-        userResult.src = cpuResult.src = "images/rock.png";
+        userResult.src = cpuResult.src = "./img 98.jpg"; // Default to Rock
         result.textContent = "Wait...";
 
         optionImages.forEach((image2) => {
@@ -189,7 +189,7 @@
           let userChoice = e.target.dataset.choice;
           userResult.src = e.target.querySelector("img").src;
 
-          let cpuImages = ["images/rock.png", "images/paper.png", "images/scissors.png"];
+          let cpuImages = ["./img 98.jpg", "./img 100.jpg", "./img 99.jpg"];
           let cpuChoices = ["R", "P", "S"];
           let randomNumber = Math.floor(Math.random() * 3);
           let cpuChoice = cpuChoices[randomNumber];
