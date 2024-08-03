@@ -14,14 +14,14 @@
       font-family: "Poppins", sans-serif;
     }
     body {
-      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       background: #f6f7fb;
       text-align: center;
-      overflow-y: auto; /* Ensure vertical scroll if needed */
+      overflow-y: auto; /* Allow scrolling */
+      min-height: 100vh; /* Ensure body height covers viewport */
     }
     .container {
       width: 90%;
@@ -122,12 +122,16 @@
       text-align: center;
       margin-top: 1.5rem;
     }
+    .container img {
+      max-width: 100%; /* Ensure images fit within container */
+      height: auto; /* Maintain aspect ratio */
+    }
   </style>
 </head>
 <body>
   <section class="container">
     <div>
-      <img src="./img 220.jpg" alt="" style="width: 100%; height: auto;">
+      <img src="./img 220.jpg" alt="">
     </div>
     <div class="instructions">
       Umeed hai apnay form fill kr k Bet ke amount Admin ko bta de ho gi wrna apko koe award nahe miLay ga ! Game k result ka Screen shot Lazmi admin ko bhaijeyay ga Wrna apke game play ko update nahe kea jay ga. GOOD LUCK ! apko 3 chances deay jain gay jis main 3 rounds hongay vo sbhi clear krain gay tow Cash prize Win kr Lain gay
