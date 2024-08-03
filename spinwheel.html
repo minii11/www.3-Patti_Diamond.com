@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spin Wheel</title>
+    <title>Spin Wheel Game</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,10 +12,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100vh;
             background-color: #f0f0f0;
-            overflow: hidden;
+            overflow-y: scroll; /* Allow vertical scrolling */
+        }
+        .image-container {
+            margin-top: 20px; /* Adjust as needed */
+        }
+        .image-container img {
+            width: 100px; /* Adjust size as needed */
+            display: block;
+            margin: 0 auto;
         }
         .instructions {
             background: #fef6e5;
@@ -26,12 +34,11 @@
             font-size: 1.1rem;
             color: #333;
             border: 2px solid #7d2ae8;
-            max-width: 90%;
         }
         .spin-wheel-container {
             position: relative;
-            width: 80vmin;
-            height: 80vmin;
+            width: 80vmin; /* Adjusted for responsiveness */
+            height: 80vmin; /* Adjusted for responsiveness */
             margin-bottom: 1rem;
         }
         .spin-wheel {
@@ -60,7 +67,7 @@
             );
             position: relative;
             transform: rotate(0deg);
-            z-index: 1;
+            z-index: 1; /* Ensure wheel is above the images */
         }
         .wheel-content {
             position: absolute;
@@ -73,7 +80,7 @@
             font-weight: bold;
             color: white;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-            transform: rotate(-36deg);
+            transform: rotate(-36deg); /* Rotate the content to align with the wheel */
         }
         .wheel-content span {
             position: absolute;
@@ -137,12 +144,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 0;
+            z-index: 0; /* Ensure images are below the wheel */
         }
         .images-container div {
             position: absolute;
-            width: 12vmin;
-            height: 12vmin;
+            width: 12vmin; /* Adjust image size */
+            height: 12vmin; /* Adjust image size */
             overflow: hidden;
             transform-origin: center;
         }
@@ -165,9 +172,17 @@
     </style>
 </head>
 <body>
+    <!-- Image container -->
+    <div class="image-container">
+        <img src="./img 0.100.jpg" alt="Image Above Wheel">
+    </div>
+
+    <!-- Instructions container -->
     <div class="instructions">
         Dear! To play the SpinWheel game, you need to invest 1000 RS. After that, your name will be included in the wheel and you'll also get a chance to play SPS. You could be a lucky member and win a Laptop!
     </div>
+
+    <!-- Wheel container -->
     <div class="spin-wheel-container">
         <div class="spin-wheel">
             <div class="wheel">
@@ -198,36 +213,28 @@
             </div>
         </div>
     </div>
-    <button class="spin-button" onclick="spinWheel()">Spin the Wheel</button>
-    <div id="result" class="result"></div>
+
+    <button class="spin-button">Spin the Wheel!</button>
+    <div class="result">You Won!</div>
+
     <script>
-        function spinWheel() {
-            const wheel = document.querySelector('.wheel');
-            const result = document.getElementById('result');
+        const spinButton = document.querySelector('.spin-button');
+        const wheel = document.querySelector('.wheel');
+        const result = document.querySelector('.result');
 
-            // Start the spin
-            wheel.style.transition = 'transform 10s cubic-bezier(0.35, 0.85, 0.35, 1)';
-            wheel.style.transform = 'rotate(3600deg)';
-            result.style.display = 'none';
+        spinButton.addEventListener('click', () => {
+            const randomDegree = Math.floor(Math.random() * 360);
+            const currentDegree = wheel.style.transform.replace('rotate(', '').replace('deg)', '') || 0;
+            const newDegree = parseInt(currentDegree) + 360 * 5 + randomDegree; // 5 full spins
 
-            // After 10 seconds, stop the wheel and show result
+            wheel.style.transition = 'transform 4s ease-out';
+            wheel.style.transform = `rotate(${newDegree}deg)`;
+
             setTimeout(() => {
-                // Stop at a specific segment
-                wheel.style.transition = 'none';
-                wheel.style.transform = 'rotate(2880deg)';
-
-                // Display result
-                result.textContent = 'Congrats dear Lucky Winner! You have won the Bike. Take an SS and inform the admin :> Contact admin to claim your prize';
-                result.classList.add('glow');
                 result.style.display = 'block';
-
-                // Reset wheel transition
-                setTimeout(() => {
-                    wheel.style.transition = 'transform 10s cubic-bezier(0.35, 0.85, 0.35, 1)';
-                }, 100);
-            }, 10000);
-        }
+                result.classList.add('glow');
+            }, 4000);
+        });
     </script>
 </body>
 </html>
-
