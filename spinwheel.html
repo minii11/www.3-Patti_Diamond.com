@@ -13,27 +13,33 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            height: 100vh;
+            min-height: 100vh; /* Ensure body takes full height */
             background-color: #f0f0f0;
-            overflow-y: scroll; /* Allow vertical scrolling */
+            overflow-y: auto; /* Allow vertical scrolling */
         }
         .image-container {
             margin-top: 20px; /* Adjust as needed */
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
         .image-container img {
-            width: 100px; /* Adjust size as needed */
+            width: 80%; /* Adjust size to fit well on mobile screens */
+            max-width: 400px; /* Set a maximum width */
+            height: auto; /* Maintain aspect ratio */
             display: block;
-            margin: 0 auto;
         }
         .instructions {
             background: #fef6e5;
             padding: 1rem;
             border-radius: 10px;
-            margin-bottom: 1.5rem;
+            margin: 1.5rem 0; /* Add margin for spacing */
             text-align: center;
             font-size: 1.1rem;
             color: #333;
             border: 2px solid #7d2ae8;
+            width: 90%; /* Make sure instructions fit well on mobile */
+            max-width: 600px; /* Set a maximum width */
         }
         .spin-wheel-container {
             position: relative;
@@ -238,3 +244,4 @@
     </script>
 </body>
 </html>
+
